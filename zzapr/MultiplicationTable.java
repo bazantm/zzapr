@@ -12,20 +12,22 @@ public class MultiplicationTable {
         Scanner input = new Scanner(System.in);
 
         System.out.print("Write from which value to start the table: ");
-//        int start = input.nextInt();
-        int start = 1;
+        int start = input.nextInt();
+//        int start = 1;
 
         System.out.print("Write from which value to end the table with: ");
-//        int end = input.nextInt();
-        int end = 10;
+        int end = input.nextInt();
+//        int end = 10;
         System.out.println();
 
         if (start < end) {
-            System.out.println(W02MultiplicationTable.getRowHeader(start, end));
+            System.out.println(MultiplicationTable.getRowHeader(start, end));
             for (int i = start; i <= end; i++) {
+                System.out.printf("%4d", i);
+                System.out.print("|");
                 //columns
                 for (int j = start; j <= end; j++) {
-                    System.out.printf(W02MultiplicationTable.formatTableElement, i * j);
+                    System.out.printf(MultiplicationTable.formatTableElement, i * j);
                 }
                 System.out.println();
             }
@@ -35,19 +37,23 @@ public class MultiplicationTable {
     }
 
     static String getRowHeader(int start, int end) {
-        String result = new String();
+        String result = "";
 
         if (start < end) {
-            for (int i = 0; i < W02MultiplicationTable.formatTableElementCount; i++) {
+            for (int i = 0; i < (MultiplicationTable.formatTableElementCount - 1); i++) {
                 result += " ";
             }
             for (int i = start; i <= end; i++) {
-                result += String.format(W02MultiplicationTable.formatTableElement, i);
+                result += String.format(MultiplicationTable.formatTableElement, i);
             }
             result += "\n";
 
+            for (int i = 0; i < (MultiplicationTable.formatTableElementCount - 1); i++) {
+                result += " ";
+            }
+
             for (int i = start; i <= end; i++) {
-                for (int j = 0; j < W02MultiplicationTable.formatTableElementCount; j++) {
+                for (int j = 0; j < MultiplicationTable.formatTableElementCount; j++) {
                     result += "-";
                 }
             }
